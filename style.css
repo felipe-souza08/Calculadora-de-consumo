@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #414141, #0444f5);
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #e3f2fd;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  width: 350px;
+  text-align: center;
+}
+
+input[type="number"], button {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #90caf9;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1976d2;
+}
+
+.radio-group {
+  margin-bottom: 15px;
+}
+
+#resultado {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #0d47a1;
+}

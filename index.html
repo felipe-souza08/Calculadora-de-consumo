@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Consumo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Tipo de Combustível</h1>
+    <div class="radio-group">
+      <label><input type="radio" name="combustivel" value="etanol" checked> Etanol</label>
+      <label><input type="radio" name="combustivel" value="gasolina"> Gasolina</label>
+    </div>
+
+    <h2>Digite o consumo do veículo (Km/L):</h2>
+    <input type="number" id="consumo" placeholder="Ex: 8" min="1">
+
+    <h2>Digite a velocidade média (Km/h):</h2>
+    <input type="number" id="velocidade" placeholder="Ex: 100" min="1">
+
+    <h2>Selecione o tempo total da viagem (horas):</h2>
+    <input type="number" id="tempo" placeholder="Ex: 3" min="1">
+
+    <button id="calcular">CALCULAR</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
