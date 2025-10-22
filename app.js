@@ -1,30 +1,32 @@
-document.getElementById('calcular').addEventListener('click', () => {
-  const tipo = document.querySelector('input[name="combustivel"]:checked').value;
-  const consumo = parseFloat(document.getElementById('consumo').value);
-  const velocidade = parseFloat(document.getElementById('velocidade').value);
-  const tempo = parseFloat(document.getElementById('tempo').value);
+(function (global) {
+  'use strict';
 
-  if (isNaN(consumo) || isNaN(velocidade) || isNaN(tempo)) {
-    alert("Preencha todos os campos corretamente!");
-    return;
+  /**
+   * Calcula os dados da viagem e combustível
+   * @param {number} distance - km
+   * @param {number} consumption - km/l
+   * @param {number} price - R$/l
+   * @param {number} speed - km/h
+   */
+  function calculateTrip(distance, consumption, price, speed) {
+    const litersNeeded = distance / consumption;
+    const totalCost = litersNeeded * price;
+    const timeHours = distance / speed;
+
+    return { litersNeeded, totalCost, timeHours };
   }
 
-  const precoEtanol = 3.899;
-  const precoGasolina = 5.999;
-
-  const percurso = velocidade * tempo;
-  const litros = percurso / consumo;
-
-  let custo = 0;
-  if (tipo === "etanol") {
-    custo = litros * precoEtanol;
-  } else {
-    custo = litros * precoGasolina;
+  function formatBR(value, decimals = 2) {
+    if (!isFinite(value)) return '—';
+    return Number(value).toFixed(decimals).replace('.', ',');
   }
 
-  document.getElementById('resultado').innerHTML = `
-    <p><strong>Distância percorrida:</strong> ${percurso.toFixed(1)} Km</p>
-    <p><strong>Combustível gasto:</strong> ${litros.toFixed(1)} L</p>
-    <p><strong>Custo total:</strong> ${custo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-  `;
-});
+  function formatTime(hours) {
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+    return `${h}h ${m}min`;
+  }
+
+  global.TripCalc = { calculateTrip, formatBR, formatTime };
+
+})(window);

@@ -1,29 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
-    <title>Calculadora Consumo</title>
-  </head>
-  <body>
-    <form action="">
-      <label for="">Tipo de Combustível</label>
-      <section>
-        <div><input type="radio" name="combustivel" class="inputCombustivel" id="etanol" value="etanol" /> <label for="etanol">Etanol</label></div>
-        <div>
-          <input type="radio" name="combustivel" class="inputCombustivel" id="gasolina" value="gasolina" /> <label for="gasolina">Gasolina</label>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora de Viagem e Combustível</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Calculadora de Viagem e Combustível</h1>
+    </header>
+
+    <section class="card">
+      <form id="tripForm" autocomplete="off">
+
+        <div class="row">
+          <label for="fuelType">Tipo de combustível</label>
+          <select id="fuelType">
+            <option value="gasolina" selected>Gasolina</option>
+            <option value="etanol">Etanol</option>
+          </select>
         </div>
-      </section>
-      <label for="consumo">Digite o consumo do veículo (Km/L):</label>
-      <input type="number" id="consumo" />
-      <label for="velocidade">Digite a velocidade média (Km/h):</label>
-      <input type="number" id="velocidade" />
-      <label for="duracao">Selecione o tempo total da viagem:</label>
-      <input type="time" id="duracao" />
-      <button>CALCULAR</button>
-    </form>
-    <p>Lorem, ipsum dolor sit amet .</p>
-  </body>
+
+        <div class="row">
+          <label for="fuelPrice">Preço do combustível</label>
+          <div class="input-with-unit">
+            <span class="currency">R$</span>
+            <input type="number" id="fuelPrice" min="0" step="0.01" value="5.99" />
+            <span class="unit">/ litro</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="consumption">Consumo médio do veículo</label>
+          <div class="input-with-unit">
+            <input type="number" id="consumption" min="1" step="0.1" value="10" />
+            <span class="unit">km / litro</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="speed">Velocidade média</label>
+          <div class="input-with-unit">
+            <input type="number" id="speed" min="1" step="1" value="80" />
+            <span class="unit">km / h</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="distance">Distância total</label>
+          <div class="input-with-unit">
+            <input type="number" id="distance" min="1" step="1" value="100" />
+            <span class="unit">km</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="calculateBtn" class="btn primary">CALCULAR</button>
+          <button type="button" id="clearBtn" class="btn clear">LIMPAR</button>
+        </div>
+
+        <small class="hint"></small>
+      </form>
+    </section>
+
+    <section class="result card" id="resultSection" hidden>
+      <h2>Resultado</h2>
+      <p id="resultText"></p>
+      <ul id="resultDetails"></ul>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
